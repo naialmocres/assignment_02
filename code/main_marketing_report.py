@@ -29,10 +29,13 @@ import sys
 # `main_finance_report.py` is your worked example for anything structural.
 
 # TODO: import what this report needs from the package.
+import sales_pipeline.extract as extract
+import sales_pipeline.transform as transform
 
 
 # TODO: handle the optional dataset seed. This is the same three lines the Finance
 #       report has — read them there, then write them here yourself.
+
 
 
 # TODO: print the header, exactly:   === MARKETING: Revenue by Item ===
