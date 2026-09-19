@@ -73,6 +73,17 @@ HOW TO BUILD IT
 #       Start with only the functions you have actually written (see note 2 above),
 #       and come back to add the rest as you go.
 
+#relative imports from the ones i have already, export only the four i have written so far plus get_raw_sales_data and print_sales_table
+
+from .extract import get_raw_sales_data
+from .transform import (
+    clean_sales_data,
+    calculate_total_revenue,
+    summarize_by_item,
+    find_top_entry,
+    summarize_by_day,
+)
+from .display import print_sales_table, print_top_entry
 
 # `__all__` is a list of strings naming the public API. It does two jobs.
 #
