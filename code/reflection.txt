@@ -1,6 +1,7 @@
-Write your reflection here.
+In IST356 Assignment 02, I built an ETL (Extract, Transform, Load) pipeline package named `sales_pipeline` to support three distinct departmental reports without duplicating core business logic.
 
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+Initially, I experienced confusion around package imports and how they affected table output formatting. Specifically, I had to learn how to use relative imports (such as `from .transform import ...`) inside `sales_pipeline/__init__.py` to define the package's public API cleanly. I also struggled at first with importing the correct display functions from `display.py` (like `print_sales_table` and `print_top_entry`) so that the transformed data dictionaries rendered properly into structured tables using the `tabulate` library. Exposing only necessary functions in `__init__.py` prevented import errors during pytest collection while maintaining a clear separation of concerns between transformation math and formatting/display tasks.
+
+Another key area of learning was understanding dataset seeds. I initially was unclear on what `get_raw_sales_data(seed)` was doing. I learned that a seed (such as seed 42) ensures deterministic pseudo-random data generation, producing the exact same set of messy rows each run. This concept made me realize why hardcoding solutions for fixed sample rows fails in real-world data pipelines—testing against seeded datasets verifies that data coercion functions (like `clean_currency` and `clean_quantity`) handle unpredictable null values and formatting errors robustly across any dataset.
+
+Overall, this assignment demonstrated the power of modular Python design. By centralizing data extraction, coercion, and aggregation inside a reusable package, creating a new report for Operations required writing only one new function (`summarize_by_day`) while reusing the existing ETL pipeline.
