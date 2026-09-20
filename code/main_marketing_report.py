@@ -29,8 +29,14 @@ import sys
 # `main_finance_report.py` is your worked example for anything structural.
 
 # TODO: import what this report needs from the package.
-import sales_pipeline.extract as extract
-import sales_pipeline.transform as transform
+from sales_raw_sales_data import(
+    get_raw_sales_data,
+    clean_sales_data,
+    summarize_by_item,
+    find_top_entry,
+    print_sales_table,
+    print_top_entry,
+)
 
 
 # TODO: handle the optional dataset seed. This is the same three lines the Finance
